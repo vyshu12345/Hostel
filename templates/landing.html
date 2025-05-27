@@ -1,0 +1,91 @@
+<!-- templates/landing.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hostel Search</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .bg-image {
+      background-image: url("{% static 'images/hostelbg.png' %}");
+      filter: brightness(60%);
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: fixed;
+      width: 100%;
+      z-index: -1;
+    }
+    .search-container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .search-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      width: 320px;
+    }
+    .search-box label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 7px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .search-box button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .search-box button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-image"></div>
+
+  <div class="search-container">
+    <form method="GET" action="{% url 'search_results' %}" class="search-box">
+      <h2>Find Your Hostel</h2>
+
+      <label for="city">Destination City</label>
+      <input type="text" name="city" id="city" placeholder="Enter city" required />
+
+      <label for="checkin">Check-in Date</label>
+      <input type="date" name="checkin" id="checkin" required autocomplete="off" />
+
+      <label for="checkout">Check-out Date</label>
+      <input type="date" name="checkout" id="checkout" required autocomplete="off" />
+
+      <label for="guests">Number of Guests</label>
+      <input type="number" name="guests" id="guests" min="1" value="1" required />
+
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+</body>
+</html>
