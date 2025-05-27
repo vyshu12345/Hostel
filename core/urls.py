@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('hostels.urls')),  # includes all hostel app urls here
+    path('', include('hostels.urls')), 
 ]
 
 if settings.DEBUG:
